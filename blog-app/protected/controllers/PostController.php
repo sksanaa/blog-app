@@ -67,8 +67,21 @@ class PostController extends Controller {
     }
     public function actionView($id) {
         $model = $this->loadModel($id);
+        $comment = new Comment();
+
+        if (isset($_POST['Comment'])) {
+            $comment->attributes = $_POST['Comment'];
+            $comment->post_id = $model->id;
+            $comment->user_id = Yii::app()->user->id; // Assuming user authentication is implemented
+            if ($comment->save()) {
+                Yii::app()->user->setFlash('success', 'Comment added successfully!');
+                $this->refresh();
+            }
+        }
+
         $this->render('view', array(
             'model' => $model,
+            'comment' => $comment,
         ));
     }
     protected function loadModel($id) {
@@ -111,7 +124,7 @@ class PostController extends Controller {
                 'users' => array('*'), // Allow all users to view posts
             ),
             array('allow',
-                'actions' => array('create', 'userPosts'),
+                'actions' => array('create', 'userPosts','realTimePosts'),
                 'users' => array('@'), // Allow only authenticated users
                 'expression' => '!Yii::app()->user->isGuest && Yii::app()->user->verified', // Allow only verified users
             ),
@@ -206,6 +219,24 @@ class PostController extends Controller {
     
         // Redirect to the posts list after deletion
         $this->redirect(array('post/userPosts'));
+    }
+
+    public function actionRealTimePosts() {
+        // Fetch posts with at least 1 comment and authors with at least 2 blogs
+        $posts = Yii::app()->db->createCommand()
+            ->select('p.id, p.title, p.content, u.username as author')
+            ->from('post p')
+            ->join('user u', 'p.user_id = u.id')
+            ->join('comment c', 'p.id = c.post_id')
+            ->group('p.id')
+            ->having('COUNT(c.id) >= 1')
+            ->andWhere('(SELECT COUNT(*) FROM post p2 WHERE p2.user_id = u.id) >= 2')
+            ->queryAll();
+    
+        // Render the real-time posts view
+        $this->render('realTimePosts', array(
+            'posts' => $posts,
+        ));
     }
 
 }

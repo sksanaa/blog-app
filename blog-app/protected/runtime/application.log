@@ -472,3 +472,67 @@ Stack trace:
 REQUEST_URI=/yii-blog/blog-app/index.php?r=site/login
 HTTP_REFERER=http://localhost/yii-blog/blog-app/index.php?r=site/login
 ---
+2025/02/23 10:35:30 [error] [exception.CHttpException.403] CHttpException: You are not authorized to perform this action. in C:\xampp\htdocs\yii-blog\framework\web\auth\CAccessControlFilter.php:183
+Stack trace:
+#0 C:\xampp\htdocs\yii-blog\framework\web\auth\CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 C:\xampp\htdocs\yii-blog\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\yii-blog\framework\web\CController.php(1148): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\yii-blog\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\yii-blog\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\yii-blog\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\yii-blog\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\yii-blog\framework\web\CWebApplication.php(282): CController->run('realTimePosts')
+#8 C:\xampp\htdocs\yii-blog\framework\web\CWebApplication.php(141): CWebApplication->runController('post/realTimePo...')
+#9 C:\xampp\htdocs\yii-blog\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\yii-blog\blog-app\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/yii-blog/blog-app/index.php?r=post/realTimePosts
+HTTP_REFERER=http://localhost/yii-blog/blog-app/index.php?r=site/dashboard
+---
+2025/02/23 11:09:48 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'blog-app.comments' doesn't exist. The SQL statement executed was: SHOW FULL COLUMNS FROM `comments`.
+in C:\xampp\htdocs\yii-blog\blog-app\protected\controllers\PostController.php (70)
+in C:\xampp\htdocs\yii-blog\blog-app\index.php (13)
+2025/02/23 11:09:48 [error] [exception.CDbException] CDbException: The table "comments" for active record class "Comment" cannot be found in the database. in C:\xampp\htdocs\yii-blog\framework\db\ar\CActiveRecord.php:2391
+Stack trace:
+#0 C:\xampp\htdocs\yii-blog\framework\db\ar\CActiveRecord.php(413): CActiveRecordMetaData->__construct(Object(Comment))
+#1 C:\xampp\htdocs\yii-blog\framework\db\ar\CActiveRecord.php(79): CActiveRecord->getMetaData()
+#2 C:\xampp\htdocs\yii-blog\blog-app\protected\controllers\PostController.php(70): CActiveRecord->__construct()
+#3 [internal function]: PostController->actionView('40')
+#4 C:\xampp\htdocs\yii-blog\framework\web\actions\CAction.php(114): ReflectionMethod->invokeArgs(Object(PostController), Array)
+#5 C:\xampp\htdocs\yii-blog\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(PostController), Object(ReflectionMethod), Array)
+#6 C:\xampp\htdocs\yii-blog\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#7 C:\xampp\htdocs\yii-blog\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#8 C:\xampp\htdocs\yii-blog\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#9 C:\xampp\htdocs\yii-blog\framework\web\CController.php(1148): CFilter->filter(Object(CFilterChain))
+#10 C:\xampp\htdocs\yii-blog\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#11 C:\xampp\htdocs\yii-blog\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#12 C:\xampp\htdocs\yii-blog\framework\web\CController.php(291): CFilterChain->run()
+#13 C:\xampp\htdocs\yii-blog\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 C:\xampp\htdocs\yii-blog\framework\web\CWebApplication.php(282): CController->run('view')
+#15 C:\xampp\htdocs\yii-blog\framework\web\CWebApplication.php(141): CWebApplication->runController('post/view')
+#16 C:\xampp\htdocs\yii-blog\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#17 C:\xampp\htdocs\yii-blog\blog-app\index.php(13): CApplication->run()
+#18 {main}
+REQUEST_URI=/yii-blog/blog-app/index.php?r=post/view&id=40
+HTTP_REFERER=http://localhost/yii-blog/blog-app/index.php?r=post/userPosts
+---
+2025/02/23 11:11:06 [error] [php] Undefined variable $post (C:\xampp\htdocs\yii-blog\blog-app\protected\controllers\PostController.php:74)
+Stack trace:
+#0 unknown(0): PostController->actionView()
+#1 C:\xampp\htdocs\yii-blog\framework\web\actions\CAction.php(114): ReflectionMethod->invokeArgs()
+#2 C:\xampp\htdocs\yii-blog\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#3 C:\xampp\htdocs\yii-blog\framework\web\CController.php(308): CInlineAction->runWithParams()
+#4 C:\xampp\htdocs\yii-blog\framework\web\filters\CFilterChain.php(134): PostController->runAction()
+#5 C:\xampp\htdocs\yii-blog\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 C:\xampp\htdocs\yii-blog\framework\web\CController.php(1148): CAccessControlFilter->filter()
+#7 C:\xampp\htdocs\yii-blog\framework\web\filters\CInlineFilter.php(58): PostController->filterAccessControl()
+#8 C:\xampp\htdocs\yii-blog\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#9 C:\xampp\htdocs\yii-blog\framework\web\CController.php(291): CFilterChain->run()
+#10 C:\xampp\htdocs\yii-blog\framework\web\CController.php(265): PostController->runActionWithFilters()
+#11 C:\xampp\htdocs\yii-blog\framework\web\CWebApplication.php(282): PostController->run()
+#12 C:\xampp\htdocs\yii-blog\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#13 C:\xampp\htdocs\yii-blog\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#14 C:\xampp\htdocs\yii-blog\blog-app\index.php(13): CWebApplication->run()
+REQUEST_URI=/yii-blog/blog-app/index.php?r=post/view&id=40
+in C:\xampp\htdocs\yii-blog\blog-app\protected\controllers\PostController.php (74)
+in C:\xampp\htdocs\yii-blog\blog-app\index.php (13)

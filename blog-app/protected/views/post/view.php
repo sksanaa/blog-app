@@ -22,6 +22,36 @@
         (<?php echo $model->likes ? count($model->likes) : 0; ?> likes)
     </p>
 </div>
+<h2>Comments</h2>
+<?php foreach ($model->comments as $comment): ?>
+    <div class="comment">
+        <strong><?php echo CHtml::encode($comment->user->username); ?>:</strong>
+        <p><?php echo CHtml::encode($comment->content); ?></p>
+        <small><?php echo date('F j, Y, g:i a', strtotime($comment->created_at)); ?></small>
+    </div>
+<?php endforeach; ?>
+<h3>Add a Comment</h3>
+<?php if (Yii::app()->user->hasFlash('success')): ?>
+    <div class="flash-success">
+        <?php echo Yii::app()->user->getFlash('success'); ?>
+    </div>
+<?php endif; ?>
+
+<div class="form">
+<?php $form = $this->beginWidget('CActiveForm'); ?>
+
+    <div class="row">
+        <?php echo $form->labelEx($comment, 'content'); ?>
+        <?php echo $form->textArea($comment, 'content'); ?>
+        <?php echo $form->error($comment, 'content'); ?>
+    </div>
+
+    <div class="row buttons">
+        <?php echo CHtml::submitButton('Post Comment'); ?>
+    </div>
+
+<?php $this->endWidget(); ?>
+</div>
 <?php if(Yii::app()->user->id==$model->user_id){?>
 
 <div class="actions">
