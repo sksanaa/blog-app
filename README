@@ -2,6 +2,8 @@
 
 A full-featured Blog Web Application where users can sign up, log in, create blog posts, like/unlike posts, and add comments. The application is built using Yii 1.1 for the backend and native HTML, JavaScript, and CSS for the frontend. MySQL is used as the database.
 
+# URL 
+http://localhost/yii-blog/blog-app/index.php?r=site/login
 ---
 
 ## 🚀 **Features**
