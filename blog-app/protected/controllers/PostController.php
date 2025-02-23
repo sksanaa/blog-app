@@ -120,11 +120,11 @@ class PostController extends Controller {
     public function accessRules() {
         return array(
             array('allow',
-                'actions' => array('index', 'view', 'like', 'unlike'),
+                'actions' => array('index', 'view', 'like', 'unlike','realTimePosts'),
                 'users' => array('*'), // Allow all users to view posts
             ),
             array('allow',
-                'actions' => array('create', 'userPosts','realTimePosts'),
+                'actions' => array('create', 'userPosts'),
                 'users' => array('@'), // Allow only authenticated users
                 'expression' => '!Yii::app()->user->isGuest && Yii::app()->user->verified', // Allow only verified users
             ),
