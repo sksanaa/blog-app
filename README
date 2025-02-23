@@ -1,64 +1,90 @@
-Yii Web Programming Framework
-=============================
+# Blog Web Application
 
-Thank you for choosing Yii - a high-performance component-based PHP framework.
+A full-featured Blog Web Application where users can sign up, log in, create blog posts, like/unlike posts, and add comments. The application is built using Yii 1.1 for the backend and native HTML, JavaScript, and CSS for the frontend. MySQL is used as the database.
 
+---
 
-INSTALLATION
-------------
+## 🚀 **Features**
+- User Authentication (Signup/Login)
+- Create, Read, Update, Delete (CRUD) Blog Posts
+- Like and Unlike Posts
+- Comment on Blog Posts
+- Display Comments with User Details
+- Responsive and Minimalist Frontend
 
-Please make sure the release file is unpacked under a Web-accessible
-directory. You shall see the following files and directories:
+---
 
-      demos/               demos
-      framework/           framework source files
-      requirements/        requirement checker
-      CHANGELOG            describing changes in every Yii release
-      LICENSE              license of Yii
-      README               this file
-      UPGRADE              upgrading instructions
+## 🛠️ **Tech Stack**
+- **Backend:** Yii v1.1 (PHP)
+- **Frontend:** HTML, CSS, JavaScript
+- **Database:** MySQL
+- **Version Control:** Git
 
+---
 
-REQUIREMENTS
-------------
+## 🧾 **Requirements**
+- PHP >= 5.6
+- MySQL
+- Web Server (e.g., Apache, Nginx) 
 
-The minimum requirement by Yii is that your Web server supports
-PHP 5.1.0 or above. Yii has been tested with Apache HTTP server
-on Windows and Linux operating systems.
+---
 
-Please access the following URL to check if your Web server reaches
-the requirements by Yii, assuming "YiiPath" is where Yii is installed:
+## ⚙️ **Installation**
 
-      http://hostname/YiiPath/requirements/index.php
+1. **Clone the repository:**
+```bash
+git clone https://github.com/sksanaa/blog-app.git
+cd blog-web-application
+```
 
+2. **Install Dependencies:**
+```bash
+composer install
+```
 
-QUICK START
------------
+3. **Database Setup:**
+- Import the `database.sql` file located in the `sql` directory under blog-app folder.
+- Update the `blog-app/protected/config/database.php` file with your database credentials:
 
-Yii comes with a command line tool called "yiic" that can create
-a skeleton Yii application for you to start with.
+```php
+'db' => array(
+    'connectionString' => 'mysql:host=localhost;dbname=your_db_name',
+    'username' => 'your_username',
+    'password' => 'your_password',
+    'charset' => 'utf8',
+),
+```
 
-On command line, type in the following commands:
+4. **Run the Application:**
+```bash
+php -S localhost:8080
+```
+Open `http://localhost:8080` in your browser.
 
-        $ cd YiiPath/framework                (Linux)
-        cd YiiPath\framework                  (Windows)
+---
 
-        $ ./yiic webapp ../testdrive          (Linux)
-        yiic webapp ..\testdrive              (Windows)
+## 💻 **Usage**
 
-The new Yii application will be created at "YiiPath/testdrive".
-You can access it with the following URL:
+1. **Sign Up / Login:**
+- Register a new user or log in with existing credentials.
 
-        http://hostname/YiiPath/testdrive/index.php
+2. **Create a Blog Post:**
+- Fill in the blog post form and publish.
 
+3. **Like/Unlike Posts:**
+- Click the like button to toggle like/unlike.
 
-WHAT's NEXT
------------
+4. **Comment on Posts:**
+- Add comments to any blog post as a logged-in user.
 
-Please visit the project website for tutorials, class reference
-and join discussions with other Yii users.
+---
 
+---
 
+## 📄 **License**
+This project is licensed under the **MIT License**.
 
-The Yii Developer Team
-https://www.yiiframework.com
+---
+
+## 👨‍💻 **Author**
+- **Sana khan** - https://github.com/sksanaa
